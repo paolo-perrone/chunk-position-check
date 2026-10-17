@@ -11,13 +11,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Unit tests, including a full sweep against a mock lost-in-the-middle endpoint
-        run: python3 -m unittest discover -s tests -v
-      - name: The README's known case ends on its known VERDICT line
-        run: |
-          python3 chunk_position_check.py replay | tee out.txt
-          tail -1 out.txt | grep -qx "VERDICT: put your top chunk in slot 1 (75.8%); slots 10 and 15 score below closed-book (56.1%); cut k from 20 to 10, whose worst slot scores 61.2%, if your retriever still finds the answer chunk in its top 10."
-      - name: The example eval file loads and a dry run prints its plan without calling a model
-        run: |
-          python3 chunk_position_check.py sweep --eval examples/example_eval.jsonl --model any --k 5 --dry-run --out /tmp/x.jsonl | tee out.txt
-          grep -q "2 questions (k=2: slots 1, 2; k=5: slots 1, 2, 3, 4, 5) plus closed-book and oracle: 18 calls" out.txt
+      # Unit tests, including a full sweep against a mock lost-in-the-middle endpoint
+      - run: python3 -m unittest discover -s tests
+      # The README's known case ends on its known VERDICT line
+      - run: python3 chunk_position_check.py replay | tail -1 | grep -qx "VERDICT. put your top chunk in slot 1 .75.8%.; slots 10 and 15 score below closed-book .56.1%.; cut k from 20 to 10, whose worst slot scores 61.2%, if your retriever still finds the answer chunk in its top 10."
+      # The example eval file loads and a dry run prints its plan without calling a model
+      - run: python3 chunk_position_check.py sweep --eval examples/example_eval.jsonl --model any --k 5 --dry-run --out /tmp/x.jsonl | grep -q "2 questions (k=2: slots 1, 2; k=5: slots 1, 2, 3, 4, 5) plus closed-book and oracle: 18 calls"
