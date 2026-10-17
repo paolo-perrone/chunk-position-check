@@ -1,5 +1,9 @@
 # chunk-position-check
 
+> Tested by replaying the seven recorded sweeps from Liu et al. and by 25 unit tests, including full sweeps against a local mock model, on Python 3.9 and 3.14. Not yet run against a real model API.
+
+Companion to [What is a Transformer?](https://theaiengineer.substack.com/p/what-is-a-transformer), The AI Engineer.
+
 For engineers running RAG who want to say why a document placed tenth of twenty
 helps their model less than the same document placed first or last, measured on
 their own model before they reorder chunks or raise top-k on a hunch.
