@@ -1,0 +1,7 @@
+[project]
+name = "chunk-position-check"
+version = "1.0.0"
+description = "Find which slot in the prompt your RAG model actually reads, and whether to cut k."
+requires-python = ">=3.9"
+dependencies = []
+license = {text = "MIT"}

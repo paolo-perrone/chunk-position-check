@@ -1,0 +1,97 @@
+{
+  "about": "Recorded position sweeps from Liu et al., Lost in the Middle: How Language Models Use Long Contexts (TACL 2024, arXiv 2307.03172). Accuracies are best-subspan exact match on the 2,655 NaturalQuestions-Open queries of the multi-document QA task, greedy decoding. Slot numbers are 1-based: the paper's Index 0 is slot 1. Paper models come from Tables 1, 5, 6 and 7 (one decimal). llama-2-70b-chat comes from the expected scores printed in EXPERIMENTS.md of github.com/nelson-liu/lost-in-the-middle (exact fractions; 20 of 2,655 queries were dropped for exceeding the 4,096-token window, so n is 2,635 for the document settings).",
+  "source_urls": [
+    "https://arxiv.org/abs/2307.03172",
+    "https://github.com/nelson-liu/lost-in-the-middle/blob/main/EXPERIMENTS.md"
+  ],
+  "models": {
+    "gpt-3.5-turbo": {
+      "label": "GPT-3.5-Turbo (0613), 4K window",
+      "cite": "Tables 1, 5 and 6",
+      "n": 2655,
+      "closedbook": 56.1,
+      "oracle": 88.3,
+      "sweeps": {
+        "10": {"1": 76.8, "5": 61.2, "10": 62.4},
+        "20": {"1": 75.8, "5": 57.2, "10": 53.8, "15": 55.4, "20": 63.2}
+      },
+      "provenance": "Table 1 (closed-book, oracle), Table 5 (10 documents), Table 6 (20 documents)"
+    },
+    "gpt-3.5-turbo-16k": {
+      "label": "GPT-3.5-Turbo (16K, 0613)",
+      "cite": "Tables 1, 5, 6 and 7",
+      "n": 2655,
+      "closedbook": 56.0,
+      "oracle": 88.6,
+      "sweeps": {
+        "10": {"1": 76.9, "5": 61.0, "10": 62.5},
+        "20": {"1": 75.7, "5": 57.3, "10": 54.1, "15": 55.4, "20": 63.1},
+        "30": {"1": 73.4, "5": 55.1, "10": 50.5, "15": 50.9, "20": 51.8, "25": 54.9, "30": 63.7}
+      },
+      "provenance": "Tables 1, 5, 6, 7"
+    },
+    "claude-1.3": {
+      "label": "Claude-1.3, 8K window",
+      "cite": "Tables 1, 5, 6 and 7",
+      "n": 2655,
+      "closedbook": 48.3,
+      "oracle": 76.1,
+      "sweeps": {
+        "10": {"1": 62.9, "5": 58.3, "10": 59.7},
+        "20": {"1": 59.9, "5": 55.9, "10": 56.8, "15": 57.2, "20": 60.1},
+        "30": {"1": 59.1, "5": 55.1, "10": 54.8, "15": 55.7, "20": 56.4, "25": 56.2, "30": 59.9}
+      },
+      "provenance": "Tables 1, 5, 6, 7"
+    },
+    "claude-1.3-100k": {
+      "label": "Claude-1.3 (100K)",
+      "cite": "Tables 1, 5, 6 and 7",
+      "n": 2655,
+      "closedbook": 48.2,
+      "oracle": 76.4,
+      "sweeps": {
+        "10": {"1": 63.1, "5": 58.3, "10": 59.7},
+        "20": {"1": 59.8, "5": 55.9, "10": 57.0, "15": 57.4, "20": 60.0},
+        "30": {"1": 59.1, "5": 55.1, "10": 54.9, "15": 55.7, "20": 56.6, "25": 56.1, "30": 60.0}
+      },
+      "provenance": "Tables 1, 5, 6, 7"
+    },
+    "mpt-30b-instruct": {
+      "label": "MPT-30B-Instruct, 8K window",
+      "cite": "Tables 1, 5, 6 and 7",
+      "n": 2655,
+      "closedbook": 31.5,
+      "oracle": 81.9,
+      "sweeps": {
+        "10": {"1": 60.2, "5": 56.2, "10": 59.7},
+        "20": {"1": 53.7, "5": 51.8, "10": 52.2, "15": 52.7, "20": 56.3},
+        "30": {"1": 51.6, "5": 51.3, "10": 51.2, "15": 49.0, "20": 49.6, "25": 51.3, "30": 54.1}
+      },
+      "provenance": "Tables 1, 5, 6, 7"
+    },
+    "longchat-13b-16k": {
+      "label": "LongChat-13B (16K)",
+      "cite": "Tables 1, 5, 6 and 7",
+      "n": 2655,
+      "closedbook": 35.0,
+      "oracle": 83.4,
+      "sweeps": {
+        "10": {"1": 72.1, "5": 58.9, "10": 58.5},
+        "20": {"1": 68.6, "5": 57.4, "10": 55.3, "15": 52.5, "20": 55.0},
+        "30": {"1": 66.9, "5": 54.8, "10": 52.5, "15": 52.9, "20": 52.2, "25": 51.3, "30": 55.1}
+      },
+      "provenance": "Tables 1, 5, 6, 7"
+    },
+    "llama-2-70b-chat": {
+      "label": "Llama-2-70b-chat-hf, 4K window",
+      "cite": "EXPERIMENTS.md in their repo",
+      "n": 2635,
+      "closedbook": 35.3,
+      "oracle": 84.7,
+      "sweeps": {
+        "20": {"1": 56.8, "5": 53.3, "10": 54.1, "15": 59.7, "20": 69.5}
+      },
+      "provenance": "EXPERIMENTS.md expected best_subspan_em: gold index 0 0.567741935483871 (1496/2635), 4 0.5332068311195446 (1405/2635), 9 0.540796963946869 (1425/2635), 14 0.596584440227704 (1572/2635), 19 0.6948766603415559 (1831/2635); closed-book 0.35291902071563086; oracle 0.8467043314500942"
+    }
+  }
+}
